@@ -20,11 +20,12 @@ public class DateSetUp {
 
         LocalDate datePlusThreeDays = getCurrentDate().plusDays(3);
 
-        System.out.println(datePlusThreeDays);
+        return formatter.format(datePlusThreeDays);
+    }
+    public String GetDateMinusThreeDays()  {
 
-        String date = formatter.format(datePlusThreeDays);
-        System.out.println(date);
+        LocalDate dateMinusThreeDays = getCurrentDate().minusDays(3);
 
-        return "test";
+        return formatter.format(dateMinusThreeDays);
     }
 }

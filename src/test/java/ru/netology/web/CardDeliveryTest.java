@@ -27,7 +27,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=city] .input__control").setValue("Москва");
         $("[data-test-id='date'] .input__control").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $("[data-test-id='date'] .input__control").setValue("15032021");
+        $("[data-test-id='date'] .input__control").doubleClick().sendKeys(dateSetUp.GetDatePlusThreeDays());
         $("[data-test-id='name'] .input__control").setValue("Иван");
         $("[data-test-id='phone'] .input__control").setValue("+79995554400");
         $("[data-test-id='agreement'] .checkbox__box").click();
