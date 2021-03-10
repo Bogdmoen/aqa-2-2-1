@@ -3,12 +3,13 @@ package ru.netology.web;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateSetUp {
 
-    private SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public LocalDate getCurrentDate() {
 
@@ -19,6 +20,11 @@ public class DateSetUp {
 
         LocalDate datePlusThreeDays = getCurrentDate().plusDays(3);
 
-        return formatter.format(datePlusThreeDays);
+        System.out.println(datePlusThreeDays);
+
+        String date = formatter.format(datePlusThreeDays);
+        System.out.println(date);
+
+        return "test";
     }
 }
