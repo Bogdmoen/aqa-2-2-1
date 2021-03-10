@@ -1,30 +1,28 @@
 package ru.netology.web;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
+
 
 public class DateSetUp {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public LocalDate getCurrentDate() {
+    public String getCurrentDate() {
 
-        return LocalDate.now();
+        return formatter.format(LocalDate.now());
     }
 
-    public String GetDatePlusThreeDays()  {
+    public String getDatePlusThreeDays()  {
 
-        LocalDate datePlusThreeDays = getCurrentDate().plusDays(3);
+        LocalDate datePlusThreeDays = LocalDate.now().plusDays(3);
 
         return formatter.format(datePlusThreeDays);
     }
-    public String GetDateMinusThreeDays()  {
+    public String getDateMinusThreeDays()  {
 
-        LocalDate dateMinusThreeDays = getCurrentDate().minusDays(3);
+        LocalDate dateMinusThreeDays = LocalDate.now().minusDays(3);
 
         return formatter.format(dateMinusThreeDays);
     }
