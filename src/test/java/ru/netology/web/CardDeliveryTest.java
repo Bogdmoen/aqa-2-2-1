@@ -26,8 +26,7 @@ public class CardDeliveryTest {
     public void shouldGetSuccessForm() {
         open("http://localhost:9999");
         $("[data-test-id=city] .input__control").setValue("Москва");
-        $("[data-test-id='date'] .input__control").sendKeys(Keys.CONTROL + "a");
-        $("[data-test-id='date'] .input__control").sendKeys(Keys.BACK_SPACE);
+        $("[data-test-id='date'] .input__control").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id='date'] .input__control").setValue("15032021");
         $("[data-test-id='name'] .input__control").setValue("Иван");
         $("[data-test-id='phone'] .input__control").setValue("+79995554400");
