@@ -32,8 +32,14 @@ public class CityDatePickerTest {
     @Test
     public void shouldClickCitySuggest() {
         open("http://localhost:9999");
-        $("[data-test-id=city] .input__control").setValue("Петро");
-
+        $("[data-test-id=city] .input__control").sendKeys("Петро");
+        $(byXpath("//span[text()='Петрозаводск']")).should(Condition.exist);
+        $(byXpath("//span[text()='Петропавловск-Камчатский']")).should(Condition.exist);
+        $("[data-test-id=city] .input__control").sendKeys("заводск");
+        $(byXpath("//span[text()='Петрозаводск']")).should(Condition.exist);
+        $(byXpath("//span[text()='Петропавловск-Камчатский']")).shouldNot(Condition.exist);
+        $(byXpath("//span[text()='Петрозаводск']")).click();
+        $("[data-test-id='city'] .input__control").shouldHave(Condition.attribute("value", "Петрозаводск"));
     }
 
     @Test
@@ -44,7 +50,7 @@ public class CityDatePickerTest {
         if(dateSetUp.isNextMonth()) {
             $(".calendar__arrow_direction_right[data-step= '1']").click();
         }
-        $(By.xpath(dateSetUp.getCalendarDayPlusWeek())).click();
+        $(By.xpath(dateSetUp.getCalendarDayPlusDay(7))).click();
         $("[data-test-id='name'] .input__control").setValue("Иван");
         $("[data-test-id='phone'] .input__control").setValue("+79995554400");
         $("[data-test-id='agreement'] .checkbox__box").click();
@@ -81,7 +87,6 @@ public class CityDatePickerTest {
             $(byXpath(dateSetUp.getNextYearCalendarDay())).click();
             $("[data-test-id='date'] .input__control").shouldHave(Condition.attribute("value", dateSetUp.getNextYearDate()));
         }
-
 
 }
 

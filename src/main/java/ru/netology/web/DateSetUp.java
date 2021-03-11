@@ -16,30 +16,21 @@ public class DateSetUp {
     private final LocalDate currentDate = LocalDate.now();
 
     public String getCurrentDate() {
-
         return formatter.format(LocalDate.now());
     }
 
     public String getDatePlusDays(int day) {
-
         LocalDate datePlusThreeDays = currentDate.plusDays(day);
-
         return formatter.format(datePlusThreeDays);
     }
-    public String getDateMinusThreeDays()  {
 
-        LocalDate dateMinusThreeDays = currentDate.minusDays(3);
-
-        return formatter.format(dateMinusThreeDays);
+    public String getDateMinusDays(int day)  {
+        LocalDate date = currentDate.minusDays(day);
+        return formatter.format(date);
     }
 
-    public String getDayPlusThree () {
-        return formatterDay.format(currentDate.plusDays(3));
-    }
-
-    public String getCalendarDayPlusWeek () {
-
-        String day = formatterDay.format(currentDate.plusDays(7));
+    public String getCalendarDayPlusDay (int increment) {
+        String day = formatterDay.format(currentDate.plusDays(increment));
         return left + day + right;
     }
 
@@ -67,10 +58,8 @@ public class DateSetUp {
     }
 
     public boolean isNextMonth() {
-
         int monthThree = Integer.parseInt(formatterMonth.format(currentDate.plusDays(3)));
         int monthWeek = Integer.parseInt(formatterMonth.format(currentDate.plusDays(7)));
-
         return monthThree != monthWeek;
     }
 }
